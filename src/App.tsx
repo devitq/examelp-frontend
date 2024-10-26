@@ -1,21 +1,19 @@
-import {AsideHeader} from '@gravity-ui/navigation';
-import {Ghost} from '@gravity-ui/icons';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
-import {InfoButtons} from './components/InfoButtons';
-import {Wrapper} from './components/Wrapper';
+import {Layout} from './components/Layout';
+import {Main} from './components/Main';
+import {Subjects} from './components/Subjects';
 
 const App = () => {
     return (
-        <AsideHeader
-            logo={{icon: Ghost, text: 'vite-example'}}
-            compact={true}
-            hideCollapseButton={true}
-            renderContent={() => (
-                <Wrapper>
-                    <InfoButtons />
-                </Wrapper>
-            )}
-        />
+        <BrowserRouter>
+            <Routes>
+                <Route element={<Layout />}>
+                    <Route path="/" element={<Main />} />
+                    <Route path="/subjects/" element={<Subjects />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
     );
 };
 
