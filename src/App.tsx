@@ -1,55 +1,57 @@
-import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, {useEffect} from 'react';
+import Cookies from 'js-cookie';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
-import {AsideHeader} from '@gravity-ui/navigation';
-import {ChartColumn, GraduationCap, LayoutList} from '@gravity-ui/icons';
+import {Theme, ThemeProvider} from '@gravity-ui/uikit';
+import {Layout} from './components/Layout';
+import {Main} from './components/Main';
+// import SubjectsPage from './components/SubjectsPage';
+// import SubjectPage from './components/SubjectPage';
 
-import {InfoButtons} from './components/InfoButtons';
-import {Wrapper} from './components/Wrapper';
+const DARK = 'dark';
+const LIGHT = 'light';
+const DEFAULT_THEME = LIGHT;
+
+const DEFAULT_COMPACT = true;
+
+export const DEFAULT_BODY_CLASSNAME = `g-root g-root_theme_${DEFAULT_THEME}`;
 
 const App = () => {
-    const [compact, setCompact] = React.useState(false);
-    const navigate = useNavigate();
+    const initialCompact = Cookies.get('compact') || DEFAULT_COMPACT;
+    const [compact, setCompact] = React.useState(initialCompact);
+
+    const initialTheme = Cookies.get('theme') || DEFAULT_THEME;
+    const [theme, setTheme] = React.useState<Theme>(initialTheme as Theme);
+
+    useEffect(() => {
+        Cookies.set('theme', theme, {expires: 365});
+        document.body.className = `g-root g-root_theme_${theme}`;
+    }, [theme]);
+
+    useEffect(() => {
+        Cookies.set('compact', compact, {expires: 365});
+    }, [compact]);
+
+    const toggleTheme = () => {
+        setTheme((prevTheme) => (prevTheme === DARK ? LIGHT : DARK));
+    };
 
     return (
-        <Routes>
-            <AsideHeader
-                logo={{icon: GraduationCap, text: 'LMS'}}
-                compact={compact}
-                multipleTooltip={true}
-                headerDecoration={true}
-                onChangeCompact={(v) => {
-                    setCompact(v);
-                }}
-                subheaderItems={[
-                    {
-                        item: {
-                            id: 'all_subjects',
-                            title: 'Предметы',
-                            icon: LayoutList,
-                            link: '/',
-                            onItemClick: navigate('/subjects'),
-                        },
-                    },
-                    {
-                        item: {
-                            id: 'stats',
-                            title: 'Статистика',
-                            icon: ChartColumn,
-                            // onItemClick: () =>
-                            //     setVisiblePanel(
-                            //         visiblePanel === Panel.Search ? undefined : Panel.Search,
-                            //     ),
-                        },
-                    },
-                ]}
-                renderContent={() => (
-                    <Wrapper>
-                        <InfoButtons />
-                    </Wrapper>
-                )}
-            />
-        </Routes>
+        <BrowserRouter>
+            <ThemeProvider theme={theme}>
+                <Layout
+                    compact={compact}
+                    setCompact={setCompact}
+                    theme={theme}
+                    toggleTheme={toggleTheme}
+                />
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                    {/* <Route path="/subjects/" element={<SubjectsPage />} />
+                    <Route path="/subjects/:subjectId/" element={<SubjectPage />} /> */}
+                </Routes>
+            </ThemeProvider>
+        </BrowserRouter>
     );
 };
 
