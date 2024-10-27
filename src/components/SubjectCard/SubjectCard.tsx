@@ -3,7 +3,7 @@ import {Card} from '@gravity-ui/uikit';
 
 export default function SubjectCard(subject: SubjectModel) {
     return (
-        <a href={`/subjects/${subject.id}`}>
+        <a href={`/subjects/${subject.id}/`}>
             <Card
                 style={{
                     width: '120px',
