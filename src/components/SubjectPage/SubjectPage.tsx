@@ -1,16 +1,16 @@
 import {Breadcrumbs} from '@gravity-ui/uikit';
-import React from 'react';
+import {useParams} from 'react-router-dom';
 
-export const Subject: React.FC = () => {
+export default function SubjectPage() {
+    const {subjectId} = useParams();
     return (
         <>
             <Breadcrumbs
                 items={[
                     {text: 'Все предметы', href: '/subjects/'},
-                    {text: 'Предмет', action: () => {}},
+                    {text: subjectId, href: `/subjects/${subjectId}/`},
                 ]}
             />
-            <h1>Subject Info</h1>
         </>
     );
-};
+}

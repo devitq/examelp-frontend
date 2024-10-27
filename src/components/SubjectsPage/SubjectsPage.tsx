@@ -2,14 +2,14 @@ import {Breadcrumbs, Tabs} from '@gravity-ui/uikit';
 import React from 'react';
 import SubjectCard from '../SubjectCard/SubjectCard';
 
-export const Subjects: React.FC = () => {
+export default function SubjectsPage() {
     const [activeTab, setActiveTab] = React.useState('oge');
     const renderContent = () => {
         switch (activeTab) {
             case 'oge':
-                return <SubjectCard subject="math" />;
+                return <SubjectCard subject={{id: 1, name: 'math'}} />;
             case 'ege':
-                return <SubjectCard subject="russian" />;
+                return <SubjectCard subject={{id: 2, name: 'russian'}} />;
             default:
                 return null;
         }
@@ -24,4 +24,4 @@ export const Subjects: React.FC = () => {
             <div>{renderContent()}</div>
         </>
     );
-};
+}
