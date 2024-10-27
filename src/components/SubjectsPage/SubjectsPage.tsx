@@ -7,9 +7,9 @@ export default function SubjectsPage() {
     const renderContent = () => {
         switch (activeTab) {
             case 'oge':
-                return <SubjectCard subject={{id: 1, name: 'math'}} />;
+                return <SubjectCard subject={{id: 'math-oge', name: 'math'}} />;
             case 'ege':
-                return <SubjectCard subject={{id: 2, name: 'russian'}} />;
+                return <SubjectCard subject={{id: 'russ-ege', name: 'russian'}} />;
             default:
                 return null;
         }

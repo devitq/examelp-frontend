@@ -16,7 +16,7 @@ export default function SubjectCard(subject: SubjectModel) {
                 type="container"
                 size="l"
             >
-                {subject.name}
+                {subject.title}
             </Card>
         </a>
     );
