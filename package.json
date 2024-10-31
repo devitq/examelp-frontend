@@ -1,6 +1,7 @@
 {
   "name": "ailms-frontend",
   "version": "0.1.0",
+  "type": "module",
   "engines": {
     "node": ">=18"
   },
