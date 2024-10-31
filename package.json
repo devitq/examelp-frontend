@@ -1,26 +1,8 @@
 {
-  "name": "gravity-ui-vite-example",
+  "name": "ailms-frontend",
   "version": "0.1.0",
-  "type": "module",
-  "keywords": [
-    "react",
-    "vite",
-    "template",
-    "typescript",
-    "gravity",
-    "uikit",
-    "sass"
-  ],
-  "description": "Vite template with: typescript, sass and @gravity-ui packages",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gravity-ui/gravity-ui-vite-example"
-  },
   "engines": {
     "node": ">=18"
-  },
-  "bugs": {
-    "url": "https://github.com/gravity-ui/gravity-ui-vite-example/issues"
   },
   "scripts": {
     "prepare": "husky install",
