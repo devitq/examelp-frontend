@@ -7,7 +7,7 @@ $block: '.wrapper';
     padding: 20px;
     box-sizing: border-box;
 
-    &__theme-button {
+    &__header {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -19,13 +19,7 @@ $block: '.wrapper';
         margin-bottom: 56px;
     }
 
-    &__header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
     &__content {
-        margin-top: 40px;
+        margin-top: 10px;
     }
 }

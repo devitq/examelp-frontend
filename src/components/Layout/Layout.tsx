@@ -2,22 +2,29 @@ import React from 'react';
 import {Outlet, useNavigate} from 'react-router-dom';
 
 import {AsideHeader} from '@gravity-ui/navigation';
-import {ChartColumn, GraduationCap, LayoutList} from '@gravity-ui/icons';
+import {ChartColumn, GraduationCap, House, LayoutList, ShoppingBag} from '@gravity-ui/icons';
 
 import {Wrapper} from '../Wrapper';
 
-export const Layout: React.FC = ({compact, setCompact, theme, toggleTheme}) => {
+export const Layout: React.FC = ({theme, toggleTheme}) => {
     const navigate = useNavigate();
 
     return (
         <>
             <AsideHeader
                 logo={{icon: GraduationCap, text: 'AILMS'}}
-                compact={compact}
-                multipleTooltip={true}
+                compact={true}
                 headerDecoration={true}
-                onChangeCompact={setCompact}
+                hideCollapseButton={true}
                 subheaderItems={[
+                    {
+                        item: {
+                            id: 'home',
+                            title: 'Главная',
+                            icon: House,
+                            onItemClick: () => navigate('/'),
+                        },
+                    },
                     {
                         item: {
                             id: 'all_subjects',
@@ -33,6 +40,15 @@ export const Layout: React.FC = ({compact, setCompact, theme, toggleTheme}) => {
                             icon: ChartColumn,
                             onItemClick: () => navigate('/stats'),
                         },
+                    },
+                ]}
+                menuItems={[
+                    {
+                        id: 'buy_pro',
+                        title: 'Купить PRO',
+                        icon: ShoppingBag,
+                        iconQa: 'buy_pro',
+                        onItemClick: () => navigate('/buy_pro'),
                     },
                 ]}
                 renderContent={() => (

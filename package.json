@@ -40,7 +40,8 @@
     "@gravity-ui/uikit": "^6.32.0",
     "bem-cn-lite": "^4.1.0",
     "js-cookie": "^3.0.5",
-    "react-router-dom": "^6.27.0"
+    "react-router-dom": "^6.27.0",
+    "use-react-router-breadcrumbs": "^4.0.1"
   },
   "devDependencies": {
     "@gravity-ui/browserslist-config": "^4.1.0",
@@ -48,6 +49,7 @@
     "@gravity-ui/prettier-config": "^1.1.0",
     "@gravity-ui/stylelint-config": "^4.0.0",
     "@gravity-ui/tsconfig": "^1.0.0",
+    "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@vitejs/plugin-react": "^4.2.0",
