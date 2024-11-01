@@ -9,6 +9,8 @@ import {Layout} from './components/Layout';
 // import SubjectPage from './components/SubjectPage';
 // import LoginPage
 import {HomePage} from './components/HomePage';
+import {Achievements} from './components/Achievements';
+import {Settings} from './components/Settings';
 import {NotFound} from './components/NotFound';
 
 const DARK = 'dark';
@@ -38,6 +40,8 @@ const App = () => {
                         <Route path="/" element={<HomePage />} />
                         {/* <Route path="/subjects" element={<SubjectsPage />} />
                         <Route path="/subjects/:subjectId" element={<SubjectPage />} /> */}
+                        <Route path="/achievements" element={<Achievements />} />
+                        <Route path="/settings" element={<Settings />} />
                         <Route path="*" element={<NotFound />} />
                     </Route>
                 </Routes>

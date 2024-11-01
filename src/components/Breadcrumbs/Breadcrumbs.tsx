@@ -9,6 +9,8 @@ const routes = [
     {path: '/', breadcrumb: 'Главная'},
     {path: '/subjects', breadcrumb: 'Предметы'},
     {path: '/stats', breadcrumb: 'Статистика'},
+    {path: '/achievements', breadcrumb: 'Достижения'},
+    {path: '/settings', breadcrumb: 'Настройки'},
 ];
 
 export const Breadcrumbs: React.FC = () => {

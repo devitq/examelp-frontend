@@ -1,12 +1,40 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Outlet, useNavigate} from 'react-router-dom';
 
-import {AsideHeader} from '@gravity-ui/navigation';
-import {ChartColumn, GraduationCap, House, LayoutList, ShoppingBag} from '@gravity-ui/icons';
+import {Button, Card} from '@gravity-ui/uikit';
+import {AsideHeader, FooterItem} from '@gravity-ui/navigation';
+import {
+    ArrowRightFromSquare,
+    ChartColumn,
+    Gear,
+    GraduationCap,
+    House,
+    LayoutList,
+    Medal,
+    ShoppingBag,
+} from '@gravity-ui/icons';
 
 import {Wrapper} from '../Wrapper';
 
+enum Panel {
+    BuyPro = 'buy_pro',
+}
+
+const panelStyle = {padding: 20, width: 224};
+
+const cardStyle = {
+    width: '100%',
+    height: 'auto',
+    padding: 5,
+};
+
+const buttonStyle = {
+    marginTop: 10,
+    width: '100%',
+};
+
 export const Layout: React.FC = ({theme, toggleTheme}) => {
+    const [visiblePanel, setVisiblePanel] = useState<Panel>();
     const navigate = useNavigate();
 
     return (
@@ -16,6 +44,28 @@ export const Layout: React.FC = ({theme, toggleTheme}) => {
                 compact={true}
                 headerDecoration={true}
                 hideCollapseButton={true}
+                panelItems={[
+                    {
+                        id: 'buy_pro',
+                        content: (
+                            <div style={panelStyle}>
+                                <Card style={cardStyle} theme="normal" size="m">
+                                    <h3 style={{textAlign: 'center'}}>Тариф PRO</h3>
+                                    <ul>
+                                        <li>здесь</li>
+                                        <li>будут</li>
+                                        <li>условия</li>
+                                        <li>подписки</li>
+                                    </ul>
+                                </Card>
+                                <Button style={buttonStyle} view="action" size="l">
+                                    Купить
+                                </Button>
+                            </div>
+                        ),
+                        visible: visiblePanel === Panel.BuyPro,
+                    },
+                ]}
                 subheaderItems={[
                     {
                         item: {
@@ -27,30 +77,64 @@ export const Layout: React.FC = ({theme, toggleTheme}) => {
                     },
                     {
                         item: {
-                            id: 'all_subjects',
-                            title: 'Предметы',
-                            icon: LayoutList,
-                            onItemClick: () => navigate('/subjects'),
-                        },
-                    },
-                    {
-                        item: {
-                            id: 'stats',
-                            title: 'Статистика',
-                            icon: ChartColumn,
-                            onItemClick: () => navigate('/stats'),
+                            id: 'buy_pro',
+                            title: 'Купить PRO',
+                            icon: ShoppingBag,
+                            iconQa: 'buy_pro',
+                            onItemClick: () => {
+                                setVisiblePanel(
+                                    visiblePanel === Panel.BuyPro ? undefined : Panel.BuyPro,
+                                );
+                            },
                         },
                     },
                 ]}
                 menuItems={[
                     {
-                        id: 'buy_pro',
-                        title: 'Купить PRO',
-                        icon: ShoppingBag,
-                        iconQa: 'buy_pro',
-                        onItemClick: () => navigate('/buy_pro'),
+                        id: 'all_subjects',
+                        title: 'Предметы',
+                        icon: LayoutList,
+                        onItemClick: () => navigate('/subjects'),
+                    },
+                    {
+                        id: 'stats',
+                        title: 'Статистика',
+                        icon: ChartColumn,
+                        onItemClick: () => navigate('/stats'),
+                    },
+                    {
+                        id: 'achievements',
+                        title: 'Достижения',
+                        icon: Medal,
+                        onItemClick: () => navigate('/achievements'),
                     },
                 ]}
+                renderFooter={() => (
+                    <React.Fragment>
+                        <FooterItem
+                            item={{
+                                id: 'settings',
+                                title: 'Настройки',
+                                icon: Gear,
+                                onItemClick: () => {
+                                    navigate('/settings');
+                                },
+                            }}
+                            compact={true}
+                        />
+                        <FooterItem
+                            item={{
+                                id: 'logout',
+                                title: 'Выйти',
+                                icon: ArrowRightFromSquare,
+                                onItemClick: () => {
+                                    navigate('/');
+                                },
+                            }}
+                            compact={true}
+                        />
+                    </React.Fragment>
+                )}
                 renderContent={() => (
                     <Wrapper toggleTheme={toggleTheme} theme={theme}>
                         <Outlet />
