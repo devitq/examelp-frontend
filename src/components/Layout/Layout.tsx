@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import {Outlet, useNavigate} from 'react-router-dom';
 
-import {Button, Card} from '@gravity-ui/uikit';
+import {Button, Card, useToaster} from '@gravity-ui/uikit';
 import {AsideHeader, FooterItem} from '@gravity-ui/navigation';
 import {
     ArrowRightFromSquare,
     ChartColumn,
     Gear,
     GraduationCap,
+    Hammer,
     House,
     LayoutList,
     Medal,
@@ -41,6 +42,16 @@ const buttonStyle = {
 export const Layout: React.FC<AppProps> = ({theme, toggleTheme}) => {
     const [visiblePanel, setVisiblePanel] = useState<Panel>();
     const navigate = useNavigate();
+    const {add} = useToaster();
+
+    const showBuyProToaster = () => {
+        add({
+            title: 'В разработке',
+            mobile: true,
+            theme: 'warning',
+            renderIcon: () => <Hammer />,
+        });
+    };
 
     return (
         <>
@@ -54,7 +65,7 @@ export const Layout: React.FC<AppProps> = ({theme, toggleTheme}) => {
                         id: 'buy_pro',
                         content: (
                             <div style={panelStyle}>
-                                <Card style={cardStyle} theme="normal" size="m">
+                                <Card style={cardStyle} theme="normal" view="raised" size="m">
                                     <h3 style={{textAlign: 'center'}}>Тариф PRO</h3>
                                     <ul>
                                         <li>здесь</li>
@@ -63,7 +74,12 @@ export const Layout: React.FC<AppProps> = ({theme, toggleTheme}) => {
                                         <li>подписки</li>
                                     </ul>
                                 </Card>
-                                <Button style={buttonStyle} view="action" size="l">
+                                <Button
+                                    style={buttonStyle}
+                                    view="action"
+                                    size="l"
+                                    onClick={showBuyProToaster}
+                                >
                                     Купить
                                 </Button>
                             </div>

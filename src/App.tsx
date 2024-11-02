@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import Cookies from 'js-cookie';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
-import {Theme, ThemeProvider} from '@gravity-ui/uikit';
+import {Theme, ThemeProvider, ToasterComponent, ToasterProvider} from '@gravity-ui/uikit';
 
 import {Layout} from './components/Layout';
 // import SubjectsPage from './components/SubjectsPage';
@@ -33,20 +33,23 @@ const App = () => {
     };
 
     return (
-        <BrowserRouter>
-            <ThemeProvider theme={theme}>
-                <Routes>
-                    <Route element={<Layout theme={theme} toggleTheme={toggleTheme} />}>
-                        <Route path="/" element={<HomePage />} />
-                        {/* <Route path="/subjects" element={<SubjectsPage />} />
+        <ThemeProvider theme={theme}>
+            <ToasterProvider>
+                <BrowserRouter>
+                    <Routes>
+                        <Route element={<Layout theme={theme} toggleTheme={toggleTheme} />}>
+                            <Route path="/" element={<HomePage />} />
+                            {/* <Route path="/subjects" element={<SubjectsPage />} />
                         <Route path="/subjects/:subjectId" element={<SubjectPage />} /> */}
-                        <Route path="/achievements" element={<Achievements />} />
-                        <Route path="/settings" element={<Settings />} />
-                        <Route path="*" element={<NotFound />} />
-                    </Route>
-                </Routes>
-            </ThemeProvider>
-        </BrowserRouter>
+                            <Route path="/achievements" element={<Achievements />} />
+                            <Route path="/settings" element={<Settings />} />
+                            <Route path="*" element={<NotFound />} />
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
+                <ToasterComponent />
+            </ToasterProvider>
+        </ThemeProvider>
     );
 };
 
