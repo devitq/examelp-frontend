@@ -13,6 +13,8 @@ const b = block('wrapper');
 
 export type AppProps = {
     children: React.ReactNode;
+    toggleTheme: React.MouseEventHandler;
+    theme: string;
 };
 
 export const Wrapper: React.FC<AppProps> = ({children, toggleTheme, theme}) => {

@@ -16,6 +16,11 @@ import {
 
 import {Wrapper} from '../Wrapper';
 
+export type AppProps = {
+    toggleTheme: React.MouseEventHandler;
+    theme: string;
+};
+
 enum Panel {
     BuyPro = 'buy_pro',
 }
@@ -33,7 +38,7 @@ const buttonStyle = {
     width: '100%',
 };
 
-export const Layout: React.FC = ({theme, toggleTheme}) => {
+export const Layout: React.FC<AppProps> = ({theme, toggleTheme}) => {
     const [visiblePanel, setVisiblePanel] = useState<Panel>();
     const navigate = useNavigate();
 
