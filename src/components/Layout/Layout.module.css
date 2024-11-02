@@ -1,0 +1,15 @@
+.panel {
+    padding: 20px;
+    width: 224px;
+}
+
+.bypro_card {
+    width: 100%;
+    height: auto;
+    padding: 5px;
+}
+
+.buy_button {
+    margin-top: 10px;
+    width: 100%;
+}

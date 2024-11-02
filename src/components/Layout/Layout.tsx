@@ -16,6 +16,7 @@ import {
 } from '@gravity-ui/icons';
 
 import {Wrapper} from '../Wrapper';
+import Styles from './Layout.module.css';
 
 export type AppProps = {
     toggleTheme: React.MouseEventHandler;
@@ -26,19 +27,6 @@ enum Panel {
     BuyPro = 'buy_pro',
 }
 
-const panelStyle = {padding: 20, width: 224};
-
-const cardStyle = {
-    width: '100%',
-    height: 'auto',
-    padding: 5,
-};
-
-const buttonStyle = {
-    marginTop: 10,
-    width: '100%',
-};
-
 export const Layout: React.FC<AppProps> = ({theme, toggleTheme}) => {
     const [visiblePanel, setVisiblePanel] = useState<Panel>();
     const navigate = useNavigate();
@@ -47,7 +35,6 @@ export const Layout: React.FC<AppProps> = ({theme, toggleTheme}) => {
     const showBuyProToaster = () => {
         add({
             title: 'В разработке',
-            mobile: true,
             theme: 'warning',
             renderIcon: () => <Hammer />,
         });
@@ -64,8 +51,13 @@ export const Layout: React.FC<AppProps> = ({theme, toggleTheme}) => {
                     {
                         id: 'buy_pro',
                         content: (
-                            <div style={panelStyle}>
-                                <Card style={cardStyle} theme="normal" view="raised" size="m">
+                            <div className={Styles['panel']}>
+                                <Card
+                                    className={Styles['bypro_card']}
+                                    theme="normal"
+                                    view="raised"
+                                    size="m"
+                                >
                                     <h3 style={{textAlign: 'center'}}>Тариф PRO</h3>
                                     <ul>
                                         <li>здесь</li>
@@ -75,7 +67,7 @@ export const Layout: React.FC<AppProps> = ({theme, toggleTheme}) => {
                                     </ul>
                                 </Card>
                                 <Button
-                                    style={buttonStyle}
+                                    className={Styles['buy_button']}
                                     view="action"
                                     size="l"
                                     onClick={showBuyProToaster}
