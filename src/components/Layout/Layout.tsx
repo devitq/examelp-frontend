@@ -5,6 +5,7 @@ import {Button, Card, useToaster} from '@gravity-ui/uikit';
 import {AsideHeader, FooterItem} from '@gravity-ui/navigation';
 import {
     ArrowRightFromSquare,
+    ArrowRightToSquare,
     ChartColumn,
     Gear,
     GraduationCap,
@@ -14,6 +15,8 @@ import {
     Medal,
     ShoppingBag,
 } from '@gravity-ui/icons';
+
+import {useStore} from '../../store/zustand';
 
 import {Wrapper} from '../Wrapper';
 import Styles from './Layout.module.css';
@@ -28,6 +31,7 @@ enum Panel {
 }
 
 export const Layout: React.FC<AppProps> = ({theme, toggleTheme}) => {
+    const store = useStore();
     const [visiblePanel, setVisiblePanel] = useState<Panel>();
     const navigate = useNavigate();
     const {add} = useToaster();
@@ -95,58 +99,86 @@ export const Layout: React.FC<AppProps> = ({theme, toggleTheme}) => {
                             icon: ShoppingBag,
                             iconQa: 'buy_pro',
                             onItemClick: () => {
-                                setVisiblePanel(
-                                    visiblePanel === Panel.BuyPro ? undefined : Panel.BuyPro,
-                                );
+                                if (store.isAuthenticated) {
+                                    setVisiblePanel(
+                                        visiblePanel === Panel.BuyPro ? undefined : Panel.BuyPro,
+                                    );
+                                } else {
+                                    add({
+                                        title: 'Авторизуйтесь',
+                                        theme: 'danger',
+                                    });
+                                }
                             },
                         },
                     },
                 ]}
                 menuItems={[
-                    {
-                        id: 'all_subjects',
-                        title: 'Предметы',
-                        icon: LayoutList,
-                        onItemClick: () => navigate('/subjects'),
-                    },
-                    {
-                        id: 'stats',
-                        title: 'Статистика',
-                        icon: ChartColumn,
-                        onItemClick: () => navigate('/stats'),
-                    },
-                    {
-                        id: 'achievements',
-                        title: 'Достижения',
-                        icon: Medal,
-                        onItemClick: () => navigate('/achievements'),
-                    },
+                    ...(store.isAuthenticated
+                        ? [
+                              {
+                                  id: 'all_subjects',
+                                  title: 'Предметы',
+                                  icon: LayoutList,
+                                  onItemClick: () => navigate('/subjects'),
+                              },
+                              {
+                                  id: 'stats',
+                                  title: 'Статистика',
+                                  icon: ChartColumn,
+                                  onItemClick: () => navigate('/stats'),
+                              },
+                              {
+                                  id: 'achievements',
+                                  title: 'Достижения',
+                                  icon: Medal,
+                                  onItemClick: () => navigate('/achievements'),
+                              },
+                          ]
+                        : []),
                 ]}
                 renderFooter={() => (
-                    <React.Fragment>
-                        <FooterItem
-                            item={{
-                                id: 'settings',
-                                title: 'Настройки',
-                                icon: Gear,
-                                onItemClick: () => {
-                                    navigate('/settings');
-                                },
-                            }}
-                            compact={true}
-                        />
-                        <FooterItem
-                            item={{
-                                id: 'logout',
-                                title: 'Выйти',
-                                icon: ArrowRightFromSquare,
-                                onItemClick: () => {
-                                    navigate('/');
-                                },
-                            }}
-                            compact={true}
-                        />
-                    </React.Fragment>
+                    <>
+                        {store.isAuthenticated ? (
+                            <>
+                                <FooterItem
+                                    item={{
+                                        id: 'settings',
+                                        title: 'Настройки',
+                                        icon: Gear,
+                                        onItemClick: () => {
+                                            navigate('/settings');
+                                        },
+                                    }}
+                                    compact={true}
+                                />
+                                <FooterItem
+                                    item={{
+                                        id: 'logout',
+                                        title: 'Выйти',
+                                        icon: ArrowRightFromSquare,
+                                        onItemClick: () => {
+                                            store.logout();
+                                            navigate('/login');
+                                        },
+                                    }}
+                                    compact={true}
+                                />
+                            </>
+                        ) : (
+                            <FooterItem
+                                item={{
+                                    id: 'login',
+                                    title: 'Войти',
+                                    icon: ArrowRightToSquare,
+                                    onItemClick: () => {
+                                        navigate('/login');
+                                    },
+                                }}
+                                compact={true}
+                            />
+                        )}
+                    </>
                 )}
                 renderContent={() => (
                     <Wrapper toggleTheme={toggleTheme} theme={theme}>

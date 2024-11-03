@@ -1,13 +1,34 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
-import {Box, Button, Card, Icon, Label, Overlay, Spin} from '@gravity-ui/uikit';
-import {Hammer} from '@gravity-ui/icons';
+import {Box, Button, Card, Icon, Label, Link, Overlay, Spin} from '@gravity-ui/uikit';
+import {GraduationCap, Hammer} from '@gravity-ui/icons';
+
+import {useStore} from '../../store/zustand';
 
 import {SubjectsContainer} from '../../components/SubjectsContainer';
 import Styles from './HomePage.module.css';
 
 export const HomePage: React.FC = () => {
+    const store = useStore();
+
+    if (!store.isAuthenticated) {
+        return (
+            <div className={Styles['landing-container']}>
+                <div className={Styles['landing-header']}>
+                    <GraduationCap className={Styles['landing-logo']} />
+                    <h1>AILMS Alpha</h1>
+                    <p>
+                        Ограниченный функционал, возможное наличие багов. Связаться:{' '}
+                        <Link href="https://t.me/ailms_support_bot" target="_blank">
+                            @ailms_support_bot
+                        </Link>
+                    </p>
+                </div>
+            </div>
+        );
+    }
+
     const navigate = useNavigate();
 
     const [taskCompletionDiagramLoading, setTaskCompletionDiagramLoading] = useState(true);

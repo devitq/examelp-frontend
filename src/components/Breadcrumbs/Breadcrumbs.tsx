@@ -17,6 +17,7 @@ const routes = [
     {path: '/stats', breadcrumb: 'Статистика'},
     {path: '/achievements', breadcrumb: 'Достижения'},
     {path: '/settings', breadcrumb: 'Настройки'},
+    {path: '/login', breadcrumb: 'Войти'},
 ];
 
 export const Breadcrumbs: React.FC = () => {

@@ -7,7 +7,7 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "dev": "vite",
+    "dev": "vite --port 80 --host",
     "build": "vite build",
     "preview": "vite preview",
     "lint:js": "eslint --ext .js,.jsx,.ts,.tsx .",
@@ -25,7 +25,8 @@
     "bem-cn-lite": "^4.1.0",
     "js-cookie": "^3.0.5",
     "react-router-dom": "^6.27.0",
-    "use-react-router-breadcrumbs": "^4.0.1"
+    "use-react-router-breadcrumbs": "^4.0.1",
+    "zustand": "^5.0.1"
   },
   "devDependencies": {
     "@gravity-ui/browserslist-config": "^4.1.0",

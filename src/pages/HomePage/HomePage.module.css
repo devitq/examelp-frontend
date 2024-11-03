@@ -1,3 +1,27 @@
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    margin-bottom: 56px;
+}
+
+.landing-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landing-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 110px;
+    height: 110px;
+}
+
 .stat-cards-container {
     display: flex;
     width: 100%;
@@ -49,7 +73,7 @@
     .stat-cards-container {
         flex-direction: column;
     }
-    
+
     .diagram-box {
         width: auto;
     }
