@@ -5,14 +5,14 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {Theme, ThemeProvider, ToasterComponent, ToasterProvider} from '@gravity-ui/uikit';
 
 import {Layout} from './components/Layout';
-import {HomePage} from './components/HomePage';
-import {SubjectsPage} from './components/SubjectsPage';
+import {HomePage} from './pages/HomePage';
+import {SubjectsPage} from './pages/SubjectsPage';
 // import SubjectPage from './components/SubjectPage';
-import {StatsPage} from './components/StatsPage';
-import {AchievementsPage} from './components/AchievementsPage';
-import {SettingsPage} from './components/SettingsPage';
-// import LoginPage from
-import {NotFoundPage} from './components/NotFoundPage';
+import {StatsPage} from './pages/StatsPage';
+import {AchievementsPage} from './pages/AchievementsPage';
+import {SettingsPage} from './pages/SettingsPage';
+import {LoginPage} from './pages/LoginPage';
+import {NotFoundPage} from './pages/NotFoundPage';
 
 const DARK = 'dark';
 const LIGHT = 'light';
@@ -45,6 +45,7 @@ const App = () => {
                             <Route path="/stats" element={<StatsPage />} />
                             <Route path="/achievements" element={<AchievementsPage />} />
                             <Route path="/settings" element={<SettingsPage />} />
+                            <Route path="/login" element={<LoginPage />} />
                             <Route path="*" element={<NotFoundPage />} />
                         </Route>
                     </Routes>

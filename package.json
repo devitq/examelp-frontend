@@ -21,6 +21,7 @@
     "@gravity-ui/icons": "^2.11.0",
     "@gravity-ui/navigation": "^2.27.0",
     "@gravity-ui/uikit": "^6.32.0",
+    "@telegram-auth/react": "^1.0.4",
     "bem-cn-lite": "^4.1.0",
     "js-cookie": "^3.0.5",
     "react-router-dom": "^6.27.0",

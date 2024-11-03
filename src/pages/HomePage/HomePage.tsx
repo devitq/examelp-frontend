@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import {Box, Button, Card, Icon, Label, Overlay, Spin} from '@gravity-ui/uikit';
 import {Hammer} from '@gravity-ui/icons';
 
-import {SubjectsContainer} from '../SubjectsContainer';
+import {SubjectsContainer} from '../../components/SubjectsContainer';
 import Styles from './HomePage.module.css';
 
 export const HomePage: React.FC = () => {

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 
 import {Tabs} from '@gravity-ui/uikit';
 
-import {SubjectsContainer} from '../SubjectsContainer';
+import {SubjectsContainer} from '../../components/SubjectsContainer';
 import Styles from './SubjectsPage.module.css';
 
 export const SubjectsPage: React.FC = () => {
