@@ -9,7 +9,7 @@ export const SubjectsPage: React.FC = () => {
     const [activeCategoryTab, setActiveCategoryTab] = useState('oge');
 
     useEffect(() => {
-        document.title = 'AILMS | Предметы';
+        document.title = `${import.meta.env.VITE_BRAND_NAME} | Предметы`;
     }, []);
 
     return (

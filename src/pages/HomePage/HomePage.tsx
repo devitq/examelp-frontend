@@ -16,7 +16,7 @@ export const HomePage: React.FC = () => {
     const [strikeLoading, setStrikeLoading] = useState(true);
 
     useEffect(() => {
-        document.title = 'AILMS | Главная';
+        document.title = `${import.meta.env.VITE_BRAND_NAME}  | Главная`;
         setTaskCompletionDiagramLoading(false);
         setStrikeLoading(false);
     }, []);
@@ -26,11 +26,14 @@ export const HomePage: React.FC = () => {
             <div className={Styles['landing-container']}>
                 <div className={Styles['landing-header']}>
                     <GraduationCap className={Styles['landing-logo']} />
-                    <h1>AILMS Alpha</h1>
+                    <h1>{import.meta.env.VITE_BRAND_NAME} Alpha</h1>
                     <p>
                         Ограниченный функционал, возможное наличие багов. Связаться:{' '}
-                        <Link href="https://t.me/ailms_support_bot" target="_blank">
-                            @ailms_support_bot
+                        <Link
+                            href={`https://t.me/${import.meta.env.VITE_SUPPORT_BOT_USERNAME}`}
+                            target="_blank"
+                        >
+                            @{import.meta.env.VITE_SUPPORT_BOT_USERNAME}
                         </Link>
                     </p>
                 </div>

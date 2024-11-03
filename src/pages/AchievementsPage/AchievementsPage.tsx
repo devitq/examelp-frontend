@@ -5,7 +5,7 @@ import {Hammer} from '@gravity-ui/icons';
 
 export const AchievementsPage: React.FC = () => {
     useEffect(() => {
-        document.title = 'AILMS | Достижения';
+        document.title = `${import.meta.env.VITE_BRAND_NAME} | Достижения`;
     }, []);
 
     return (

@@ -10,7 +10,7 @@ export const LoginPage: React.FC = () => {
     const [telegramLoginLoading, setTelegramLoginLoading] = useState(true);
 
     useEffect(() => {
-        document.title = 'AILMS | Войти';
+        document.title = `${import.meta.env.VITE_BRAND_NAME} | Войти`;
 
         const timer = setTimeout(() => setTelegramLoginLoading(false), 1000);
 

@@ -47,7 +47,7 @@ export const Layout: React.FC<AppProps> = ({theme, toggleTheme}) => {
     return (
         <>
             <AsideHeader
-                logo={{icon: GraduationCap, text: 'AILMS'}}
+                logo={{icon: GraduationCap, text: import.meta.env.VITE_BRAND_NAME}}
                 compact={true}
                 headerDecoration={true}
                 hideCollapseButton={true}

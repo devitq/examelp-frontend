@@ -5,7 +5,7 @@ import {Hammer} from '@gravity-ui/icons';
 
 export const StatsPage: React.FC = () => {
     useEffect(() => {
-        document.title = 'AILMS | Статистика';
+        document.title = `${import.meta.env.VITE_BRAND_NAME} | Статистика`;
     }, []);
 
     return (

@@ -5,7 +5,7 @@ import {Link} from '@gravity-ui/uikit';
 
 export const NotFoundPage: React.FC = () => {
     useEffect(() => {
-        document.title = 'AILMS | Страница не найдена';
+        document.title = `${import.meta.env.VITE_BRAND_NAME} | Страница не найдена`;
     }, []);
 
     return (

@@ -5,7 +5,7 @@ import Styles from './SubjectsContainer.module.css';
 
 export const SubjectsContainer: React.FC = () => {
     useEffect(() => {
-        document.title = 'AILMS | Статистика';
+        document.title = `${import.meta.env.VITE_BRAND_NAME} | Статистика`;
     }, []);
 
     return (

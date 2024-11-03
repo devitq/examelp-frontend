@@ -5,7 +5,7 @@ import {Hammer} from '@gravity-ui/icons';
 
 export const SettingsPage: React.FC = () => {
     useEffect(() => {
-        document.title = 'AILMS | Настройки';
+        document.title = `${import.meta.env.VITE_BRAND_NAME} Настройки`;
     }, []);
 
     return (
