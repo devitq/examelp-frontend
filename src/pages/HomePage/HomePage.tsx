@@ -12,6 +12,15 @@ import Styles from './HomePage.module.css';
 export const HomePage: React.FC = () => {
     const store = useStore();
 
+    const [taskCompletionDiagramLoading, setTaskCompletionDiagramLoading] = useState(true);
+    const [strikeLoading, setStrikeLoading] = useState(true);
+
+    useEffect(() => {
+        document.title = 'AILMS | Главная';
+        setTaskCompletionDiagramLoading(false);
+        setStrikeLoading(false);
+    }, []);
+
     if (!store.isAuthenticated) {
         return (
             <div className={Styles['landing-container']}>
@@ -30,15 +39,6 @@ export const HomePage: React.FC = () => {
     }
 
     const navigate = useNavigate();
-
-    const [taskCompletionDiagramLoading, setTaskCompletionDiagramLoading] = useState(true);
-    const [strikeLoading, setStrikeLoading] = useState(true);
-
-    useEffect(() => {
-        document.title = 'AILMS | Главная';
-        setTaskCompletionDiagramLoading(false);
-        setStrikeLoading(false);
-    }, []);
 
     return (
         <>

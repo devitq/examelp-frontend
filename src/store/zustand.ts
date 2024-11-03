@@ -20,7 +20,7 @@ export const useStore = create((set) => ({
 
             if (!(user instanceof Error)) {
                 set({
-                    isAuthenticated: true,
+                    isAuthenticated: false,
                     token: jwt,
                 });
             } else {

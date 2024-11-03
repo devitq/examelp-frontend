@@ -30,7 +30,7 @@ const App = () => {
 
     useEffect(() => {
         store.checkAuth();
-    });
+    }, []);
 
     useEffect(() => {
         Cookies.set('theme', theme, {expires: 365});
