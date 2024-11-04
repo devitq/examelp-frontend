@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Outlet, useNavigate} from 'react-router-dom';
 
 import {Button, Card, useToaster} from '@gravity-ui/uikit';
@@ -21,6 +21,8 @@ import {useStore} from '../../store/zustand';
 import {Wrapper} from '../Wrapper';
 import Styles from './Layout.module.css';
 
+import {pingServer} from '../../api/ping';
+
 export type AppProps = {
     toggleTheme: React.MouseEventHandler;
     theme: string;
@@ -35,6 +37,20 @@ export const Layout: React.FC<AppProps> = ({theme, toggleTheme}) => {
     const [visiblePanel, setVisiblePanel] = useState<Panel>();
     const navigate = useNavigate();
     const {add} = useToaster();
+
+    useEffect(() => {
+        const ping = async () => {
+            const result = await pingServer();
+            if (!result.success) {
+                add({
+                    title: result.message,
+                    theme: 'danger',
+                });
+            }
+        };
+
+        ping();
+    }, []);
 
     const showBuyProToaster = () => {
         add({
