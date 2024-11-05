@@ -108,36 +108,35 @@ export const Layout: React.FC<AppProps> = ({theme, toggleTheme}) => {
                             onItemClick: () => navigate('/'),
                         },
                     },
-                    {
-                        item: {
-                            id: 'buy_pro',
-                            title: 'Купить PRO',
-                            icon: ShoppingBag,
-                            iconQa: 'buy_pro',
-                            onItemClick: () => {
-                                if (store.isAuthenticated) {
-                                    setVisiblePanel(
-                                        visiblePanel === Panel.BuyPro ? undefined : Panel.BuyPro,
-                                    );
-                                } else {
-                                    add({
-                                        title: 'Авторизуйтесь',
-                                        theme: 'danger',
-                                    });
-                                }
-                            },
-                        },
-                    },
-                ]}
-                menuItems={[
                     ...(store.isAuthenticated
                         ? [
                               {
-                                  id: 'all_subjects',
-                                  title: 'Предметы',
-                                  icon: LayoutList,
-                                  onItemClick: () => navigate('/subjects'),
+                                  item: {
+                                      id: 'buy_pro',
+                                      title: 'Купить PRO',
+                                      icon: ShoppingBag,
+                                      iconQa: 'buy_pro',
+                                      onItemClick: () => {
+                                          setVisiblePanel(
+                                              visiblePanel === Panel.BuyPro
+                                                  ? undefined
+                                                  : Panel.BuyPro,
+                                          );
+                                      },
+                                  },
                               },
+                          ]
+                        : []),
+                ]}
+                menuItems={[
+                    {
+                        id: 'all_subjects',
+                        title: 'Предметы',
+                        icon: LayoutList,
+                        onItemClick: () => navigate('/subjects'),
+                    },
+                    ...(store.isAuthenticated
+                        ? [
                               {
                                   id: 'stats',
                                   title: 'Статистика',

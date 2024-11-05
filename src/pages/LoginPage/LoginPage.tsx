@@ -6,17 +6,23 @@ import {LoginButton} from '@telegram-auth/react';
 import {Box, Loader, Overlay, Spin, useToaster} from '@gravity-ui/uikit';
 
 import {telegramAuth} from '../../api/auth';
+import {useStore} from '../../store/zustand';
 
 import Styles from './LoginPage.module.css';
 
 export const LoginPage: React.FC = () => {
     const navigate = useNavigate();
     const {add} = useToaster();
+    const store = useStore();
     const [telegramLoginLoading, setTelegramLoginLoading] = useState(true);
     const [authrozing, setAuthrozing] = useState(false);
 
     useEffect(() => {
         document.title = `${import.meta.env.VITE_BRAND_NAME} | Войти`;
+
+        if (store.isAuthenticated) {
+            return navigate('/');
+        }
 
         const timer = setTimeout(() => setTelegramLoginLoading(false), 1000);
 
@@ -45,6 +51,7 @@ export const LoginPage: React.FC = () => {
                                         title: 'Вы успешно авторизованы!',
                                         theme: 'success',
                                     });
+                                    store.login(result.response.token, result.response.user);
                                     navigate('/');
                                 } else {
                                     add({
@@ -54,7 +61,7 @@ export const LoginPage: React.FC = () => {
                                 }
 
                                 setAuthrozing(false);
-                            }, 2000);
+                            }, 1000);
                         }}
                     />
                     <Overlay visible={telegramLoginLoading}>

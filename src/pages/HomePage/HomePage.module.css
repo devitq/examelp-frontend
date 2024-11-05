@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Tiny5&display=swap');
+
 .landing-container {
     display: flex;
     flex-direction: column;
@@ -56,13 +58,23 @@
 
 .strike-text {
     color: #fc620d;
-    font-size: 50px;
+    font-size: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     height: 100%;
     width: 100%;
+    font-family: 'Tiny5', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.strike-text-fire {
+    font-family: 'Tiny5', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 60px;
 }
 
 .strike-days {
@@ -85,36 +97,54 @@
 
 @media (min-width: 380px) {
     .strike-text {
-        font-size: 75px;
+        font-size: 100px;
+    }
+    .strike-text-fire {
+        font-size: 80px;
     }
 }
 
 @media (min-width: 480px) {
     .strike-text {
+        font-size: 120px;
+    }
+    .strike-text-fire {
         font-size: 100px;
     }
 }
 
 @media (min-width: 525px) {
     .strike-text {
+        font-size: 150px;
+    }
+    .strike-text-fire {
         font-size: 125px;
     }
 }
 
 @media (min-width: 1100px) {
     .strike-text {
+        font-size: 180px;
+    }
+    .strike-text-fire {
         font-size: 150px;
     }
 }
 
 @media (min-width: 1300px) {
     .strike-text {
+        font-size: 210px;
+    }
+    .strike-text-fire {
         font-size: 175px;
     }
 }
 
 @media (min-width: 1400px) {
     .strike-text {
+        font-size: 240px;
+    }
+    .strike-text-fire {
         font-size: 200px;
     }
 }

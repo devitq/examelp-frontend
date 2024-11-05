@@ -9,11 +9,15 @@ export const telegramAuth = async (params: {data_check_string: string}): Promise
         });
 
         if (!response.ok) {
-            return {success: false, message: 'ГООООЛ ХХАХАХАХ ПАСХАЛКО УХАХАХХААХ'};
+            return {
+                success: false,
+                message: 'ГООООЛ ХХАХАХАХ ПАСХАЛКО УХАХАХХААХ увы',
+                response: response,
+            };
         }
 
         const data = await response.json();
-        return {success: true, data};
+        return {success: true, response: data};
     } catch (err) {
         return {success: false, message: 'Ошибка при подключении к серверу'};
     }

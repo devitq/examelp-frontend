@@ -31,5 +31,5 @@ export const Breadcrumbs: React.FC = () => {
         },
     }));
 
-    return <GravityuiBreadcrumbs items={[...items]} />;
+    return <GravityuiBreadcrumbs items={[...items]} firstDisplayedItemsCount={1} lastDisplayedItemsCount={1} />;
 };

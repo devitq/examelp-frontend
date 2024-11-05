@@ -7,7 +7,7 @@ import {useToaster} from '@gravity-ui/uikit';
 export const PrivateRoute: React.FC = () => {
     const store = useStore();
     const {add} = useToaster();
-    if (!store.token) {
+    if (!store.isAuthenticated) {
         add({
             title: 'Авторизуйтесь',
             theme: 'danger',

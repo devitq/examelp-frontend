@@ -1,30 +1,48 @@
+import Cookies from 'js-cookie';
 import {create} from 'zustand';
 
-// import {getJWT, setJWT, removeJWT, getMe} from '@/app/api/api-utils';
-// import {endpoints} from '@/app/api/config';
+import {getMe} from '../api/me';
+
+export const getSessionfromCookie = () => {
+    return Cookies.get('session') || null;
+};
+
+export const setSessionfromCookie = (token: any) => {
+    if (!token) return;
+    Cookies.set('session', token, {expires: 7, secure: true, sameSite: 'None'});
+};
+
+export const unsetSessionfromCookie = () => {
+    Cookies.remove('session');
+};
 
 export const useStore = create((set) => ({
     isAuthenticated: false,
     token: null,
-    login: (user: JSON, token: string) => {
-        set({isAuthenticated: true, user, token});
+    user: null,
+    login: (token: string, user: JSON) => {
+        set({isAuthenticated: true, token: token, user: user});
+        setSessionfromCookie(token);
     },
     logout: () => {
-        set({isAuthenticated: false, user: null, token: null});
+        set({isAuthenticated: false, token: null, user: null});
+        unsetSessionfromCookie();
     },
     checkAuth: async () => {
-        const jwt = 'jwt';
+        const session = getSessionfromCookie();
 
-        if (jwt) {
-            const user = 'well';
+        if (session) {
+            const result = getMe();
 
-            if (!(user instanceof Error)) {
+            if (result.success) {
                 set({
-                    isAuthenticated: false,
-                    token: jwt,
+                    isAuthenticated: true,
+                    token: session,
+                    user: result.response,
                 });
             } else {
                 set({isAuthenticated: false, user: null, token: null});
+                unsetSessionfromCookie();
             }
         } else {
             set({isAuthenticated: false, user: null, token: null});
