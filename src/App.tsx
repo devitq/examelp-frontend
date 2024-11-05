@@ -10,7 +10,7 @@ import {Layout} from './components/Layout';
 import {PrivateRoute} from './components/PrivateRoute';
 import {HomePage} from './pages/HomePage';
 import {SubjectsPage} from './pages/SubjectsPage';
-// import SubjectPage from './components/SubjectPage';
+import {SubjectPage} from './pages/SubjectPage';
 import {StatsPage} from './pages/StatsPage';
 import {AchievementsPage} from './pages/AchievementsPage';
 import {SettingsPage} from './pages/SettingsPage';
@@ -48,10 +48,10 @@ const App = () => {
                     <Routes>
                         <Route element={<Layout theme={theme} toggleTheme={toggleTheme} />}>
                             <Route path="/" element={<HomePage />} />
+                            <Route path="/subjects" element={<SubjectsPage />} />
+                            <Route path="/subjects/:subjectId" element={<SubjectPage />} />
                             <Route element={<PrivateRoute />}>
                                 <Route path="/" element={<HomePage />} />
-                                <Route path="/subjects" element={<SubjectsPage />} />
-                                {/* <Route path="/subjects/:subjectId" element={<SubjectPage />} /> */}
                                 <Route path="/stats" element={<StatsPage />} />
                                 <Route path="/achievements" element={<AchievementsPage />} />
                                 <Route path="/settings" element={<SettingsPage />} />
