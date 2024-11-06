@@ -11,10 +11,10 @@ export const getMe = async () => {
         });
 
         if (response.status === 401) {
-            return {success: false, message: 'Сессия недействительна', response: response,};
+            return {success: false, message: 'Сессия недействительна', response: response};
         }
         if (!response.ok) {
-            return {success: false, message: 'Неудалось получить профиль', response: response,};
+            return {success: false, message: 'Неудалось получить профиль', response: response};
         }
 
         const data = await response.json();

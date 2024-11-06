@@ -1,18 +1,23 @@
-import React from 'react';
-import {Navigate, Outlet} from 'react-router-dom';
+import React, {useEffect} from 'react';
+import {Outlet, useNavigate} from 'react-router-dom';
 import {useStore} from '../../store/zustand';
 
 import {useToaster} from '@gravity-ui/uikit';
 
 export const PrivateRoute: React.FC = () => {
     const store = useStore();
+    const navigate = useNavigate();
     const {add} = useToaster();
-    if (!store.isAuthenticated) {
-        add({
-            title: 'Авторизуйтесь',
-            theme: 'danger',
-        });
-        return <Navigate to="/login" />;
-    }
+
+    useEffect(() => {
+        if (!store.isAuthenticated && store.checkedAuth) {
+            add({
+                title: 'Авторизуйтесь',
+                theme: 'danger',
+            });
+            navigate('/login');
+        }
+    }, [store]);
+
     return <Outlet />;
 };

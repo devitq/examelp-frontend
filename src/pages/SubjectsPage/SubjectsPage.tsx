@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useSearchParams} from 'react-router-dom';
 
-import {Box, Overlay, Tabs, Spin} from '@gravity-ui/uikit';
+import {Box, Overlay, Spin, Tabs} from '@gravity-ui/uikit';
 
 import {SubjectsSkeletonContainer} from '../../components/SubjectsSkeletonContainer';
 import {SubjectsContainer} from '../../components/SubjectsContainer';
@@ -16,10 +16,10 @@ export const SubjectsPage: React.FC = () => {
     useEffect(() => {
         document.title = `${import.meta.env.VITE_BRAND_NAME} | Предметы`;
 
-        const tabFromQuery = searchParams.get('exam') || 'oge';
+        const tabFromQuery = searchParams.get('exam') || '05273e46-4343-48c9-836b-b94ee5cf8206';
         setActiveCategoryTab(tabFromQuery);
 
-        const timer = setTimeout(() => setSubjectsLoading(false), 1000);
+        const timer = setTimeout(() => setSubjectsLoading(false), 500);
 
         return () => clearTimeout(timer);
     }, []);
@@ -41,8 +41,8 @@ export const SubjectsPage: React.FC = () => {
                 activeTab={activeCategoryTab}
                 size="l"
                 items={[
-                    {id: 'oge', title: 'ОГЭ', counter: 13},
-                    {id: 'ege', title: 'ЕГЭ', counter: 15},
+                    {id: '05273e46-4343-48c9-836b-b94ee5cf8206', title: 'ОГЭ', counter: 13},
+                    {id: 'd0aaa953-4b9d-4e2f-8143-3d8918ba927b', title: 'ЕГЭ', counter: 15},
                 ]}
                 onSelectTab={(tabId) => {
                     setActiveCategoryTab(tabId);

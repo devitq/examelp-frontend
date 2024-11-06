@@ -5,7 +5,7 @@ import {Button, Card, Skeleton} from '@gravity-ui/uikit';
 
 import Styles from './SubjectCard.module.css';
 
-export const SubjectCard: React.FC = ({id, title, description, showExams}) => {
+export const SubjectCard: React.FC = ({id, title, description, examName, showExams}) => {
     const navigate = useNavigate();
 
     return (
