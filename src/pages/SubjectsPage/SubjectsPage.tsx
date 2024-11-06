@@ -46,7 +46,7 @@ export const SubjectsPage: React.FC = () => {
         const timer = setTimeout(() => {
             fetchSubjects();
             setSubjectsLoading(false);
-        }, 500);
+        }, 200);
 
         return () => clearTimeout(timer);
     }, [activeCategoryTab]);

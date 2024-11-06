@@ -44,7 +44,7 @@ export const HomePage: React.FC = () => {
             const timer = setTimeout(async () => {
                 setTaskCompletionDiagramLoading(false);
                 await fetchStrike();
-            }, 500);
+            }, 200);
 
             return () => clearTimeout(timer);
         }
