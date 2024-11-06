@@ -43,8 +43,8 @@ export const SubjectsPage: React.FC = () => {
             }
         };
 
-        const timer = setTimeout(() => {
-            fetchSubjects();
+        const timer = setTimeout(async () => {
+            await fetchSubjects();
             setSubjectsLoading(false);
         }, 200);
 
