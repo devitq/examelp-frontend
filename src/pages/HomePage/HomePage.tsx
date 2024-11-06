@@ -93,7 +93,7 @@ export const HomePage: React.FC = () => {
                             </Card>
                         </Box>
                     </div>
-                    <h1 className={Styles['my-subjects-title']}>Мои предметы:</h1>
+                    <h1 className={Styles['my-subjects-title']}>Мои предметы</h1>
                     <Card className={Styles['no-subjects-container']} theme="normal" size="m">
                         <Button
                             className={Styles['buy_button']}

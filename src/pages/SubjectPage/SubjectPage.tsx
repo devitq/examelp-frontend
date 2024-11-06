@@ -30,7 +30,7 @@ export const SubjectPage: React.FC = () => {
     return (
         <>
             <Box position="relative">
-                <h2>Темы:</h2>
+                <h2>Темы</h2>
                 <Box position="relative">
                     {!topicsSkeletonVisible ? <TopicContainer /> : <SubjectSkeletonContainer />}
                     <Overlay visible={topicsLoading}>

@@ -61,7 +61,7 @@ export const SubjectsPage: React.FC = () => {
 
     return (
         <>
-            <h1>Все предметы:</h1>
+            <h1>Все предметы</h1>
             <Tabs
                 className={Styles['categoty-tabs']}
                 allowNotSelected={true}
