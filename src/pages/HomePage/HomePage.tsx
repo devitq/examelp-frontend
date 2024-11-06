@@ -8,7 +8,7 @@ import {useStore} from '../../store/zustand';
 
 import {getStrike} from '../../api/strike';
 
-import {SubjectsContainer} from '../../components/SubjectsContainer';
+// import {SubjectsContainer} from '../../components/SubjectsContainer';
 import {LandingPage} from '../LandingPage/LandingPage';
 
 import Styles from './HomePage.module.css';
@@ -24,7 +24,9 @@ export const HomePage: React.FC = () => {
 
     useEffect(() => {
         document.title = `${import.meta.env.VITE_BRAND_NAME} | Главная`;
+    }, []);
 
+    useEffect(() => {
         if (store.isAuthenticated) {
             const fetchStrike = async () => {
                 const result = await getStrike();
@@ -46,7 +48,7 @@ export const HomePage: React.FC = () => {
 
             return () => clearTimeout(timer);
         }
-    }, [store]);
+    }, [store.isAuthenticated, store.checkedAuth]);
 
     return (
         <>
@@ -102,8 +104,6 @@ export const HomePage: React.FC = () => {
                             Выбрать
                         </Button>
                     </Card>
-                    <br />
-                    <SubjectsContainer />
                 </>
             ) : !store.isAuthorized && store.checkedAuth ? (
                 <LandingPage />

@@ -20,14 +20,16 @@ export const LoginPage: React.FC = () => {
     useEffect(() => {
         document.title = `${import.meta.env.VITE_BRAND_NAME} | Войти`;
 
-        if (store.isAuthenticated) {
-            return navigate('/');
-        }
-
         const timer = setTimeout(() => setTelegramLoginLoading(false), 1000);
 
         return () => clearTimeout(timer);
     }, []);
+
+    useEffect(() => {
+        if (store.isAuthenticated) {
+            return navigate('/');
+        }
+    }, [store.isAuthenticated]);
 
     return (
         <Box position="relative">

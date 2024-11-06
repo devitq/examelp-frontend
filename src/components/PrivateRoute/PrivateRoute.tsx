@@ -17,7 +17,7 @@ export const PrivateRoute: React.FC = () => {
             });
             navigate('/login');
         }
-    }, [store]);
+    }, [store.isAuthenticated, store.checkedAuth]);
 
     return <Outlet />;
 };
