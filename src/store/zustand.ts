@@ -21,6 +21,10 @@ export const useStore = create((set) => ({
     checkedAuth: false,
     token: null,
     user: null,
+    currentSubject: null,
+    setCurrentSubject: (subject: string) => {
+        set({currentSubject: subject});
+    },
     login: (token: string, user: JSON) => {
         set({isAuthenticated: true, token: token, user: user, checkedAuth: true});
         setSessionfromCookie(token);

@@ -15,8 +15,7 @@ export const TopicCard: React.FC = (props: {id: string; title: string; descripti
 
     return (
         <Card className={Styles['topic-card']} size="l">
-            {/* <img src="/istockphoto-1219382595-612x612.jpg" /> */}
-            <h2>{props.title}</h2>
+            <h4>{props.title}</h4>
             <p>{props.description}</p>
             <Button
                 className={Styles['learn-button']}

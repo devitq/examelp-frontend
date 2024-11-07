@@ -10,6 +10,7 @@ export const SubjectsContainer: React.FC = ({subjects, showExams}) => {
                 <SubjectCard
                     key={subject.id.toString()}
                     id={subject.id.toString()}
+                    image={subject.image}
                     title={subject.title}
                     description={subject.description}
                     showExams={showExams}
