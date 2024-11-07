@@ -32,7 +32,7 @@ export const TopicCard: React.FC = (props: {id: string; title: string; descripti
                     }
                 }}
             >
-                Изучать
+                Решать
             </Button>
             <Skeleton />
         </Card>

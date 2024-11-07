@@ -31,15 +31,16 @@ export const SubjectPage: React.FC = () => {
         const fetchSubject = async () => {
             const subjectResponse = await getSubjectsById(subjectId);
 
-            if (!subjectResponse.success) {
+            if (subjectResponse.success) {
+                store.setCurrentSubject(subjectResponse.response.title);
+                setSubjectData(subjectResponse.response);
+                document.title = `${import.meta.env.VITE_BRAND_NAME} | Предметы | ${subjectResponse.response.title}`;
+            } else {
                 add({
                     title: result.message,
                     theme: 'danger',
                 });
             }
-
-            store.setCurrentSubject(subjectResponse.response.title);
-            setSubjectData(subjectResponse.response);
             setSubjectLoading(false);
             const timer = setTimeout(() => setSubjectSkeletonVisible(false), 100);
 

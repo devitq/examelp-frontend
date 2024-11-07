@@ -17,6 +17,8 @@ export const Breadcrumbs: React.FC = () => {
     const routes = [
         {path: '/', breadcrumb: 'Главная'},
         {path: '/subjects/:subjectId', breadcrumb: store.currentSubject},
+        {path: '/subjects/:subjectId/topics/', breadcrumb: "Темы"},
+        {path: '/subjects/:subjectId/topics/:topicId', breadcrumb: store.currentSubject},
         {path: '/subjects', breadcrumb: 'Предметы'},
         {path: '/stats', breadcrumb: 'Статистика'},
         {path: '/achievements', breadcrumb: 'Достижения'},

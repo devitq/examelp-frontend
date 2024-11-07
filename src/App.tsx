@@ -11,6 +11,7 @@ import {PrivateRoute} from './components/PrivateRoute';
 import {HomePage} from './pages/HomePage';
 import {SubjectsPage} from './pages/SubjectsPage';
 import {SubjectPage} from './pages/SubjectPage';
+import {TopicPage} from './pages/TopicPage';
 import {StatsPage} from './pages/StatsPage';
 import {AchievementsPage} from './pages/AchievementsPage';
 import {SettingsPage} from './pages/SettingsPage';
@@ -52,6 +53,10 @@ const App = () => {
                             <Route path="/subjects/:subjectId" element={<SubjectPage />} />
                             <Route element={<PrivateRoute />}>
                                 <Route path="/" element={<HomePage />} />
+                                <Route
+                                    path="/subjects/:subjectId/topics/:topicId"
+                                    element={<TopicPage />}
+                                />
                                 <Route path="/stats" element={<StatsPage />} />
                                 <Route path="/achievements" element={<AchievementsPage />} />
                                 <Route path="/settings" element={<SettingsPage />} />
