@@ -29,9 +29,7 @@ export const SettingsPage: React.FC = () => {
                 {store.user.id.slice(0, 5)}...{store.user.id.slice(-5)}
             </Label>
             <p>Имя</p>
-            <Label size="s">
-                {store.user.first_name.slice(0, 28)}
-            </Label>
+            <Label size="s">{store.user.first_name.slice(0, 28)}</Label>
             <p>Фамилия</p>
             <Label size="s">
                 {store.user.last_name !== null && store.user.last_name !== undefined

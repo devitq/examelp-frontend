@@ -75,9 +75,7 @@ export const HomePage: React.FC = () => {
                             <Card className={Styles['strike-card']} theme="normal" size="m">
                                 {strikeLoading ? null : (
                                     <div className={Styles['strike-text']}>
-                                        <span className={Styles['strike-days']}>
-                                            {strike + 123}
-                                        </span>{' '}
+                                        <span className={Styles['strike-days']}>{strike}</span>{' '}
                                         <span
                                             className={Styles['strike-text-fire']}
                                             role="img"
