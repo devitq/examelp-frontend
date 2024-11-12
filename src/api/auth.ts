@@ -11,7 +11,7 @@ export const telegramAuth = async (params: {data_check_string: string}): Promise
         if (!response.ok) {
             return {
                 success: false,
-                message: 'ГООООЛ ХХАХАХАХ ПАСХАЛКО УХАХАХХААХ увы',
+                message: 'Что то пошло не так на сервере, уже исправляем.',
                 response: response,
             };
         }
